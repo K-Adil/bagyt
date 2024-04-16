@@ -1,0 +1,174 @@
+<html>
+  <head>
+    <title> balls </title>
+  </head>
+
+
+  <div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fancy Button</title>
+        <style>
+            .button {
+                display: inline-block;
+                padding: 15px 30px;
+                font-size: 16px;
+                margin: 4px 2px;
+                text-decoration: none;
+                color: #ffffff;
+                background-color: #66de92;
+                border-radius: 8px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+
+
+
+            body {
+                background-color: #080614;
+            }
+          .btn {
+            background-color: #66de92;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            outline: none;
+            position: absolute;
+            top: 5%; /* Position the element at 50% from the top */
+            left: 50%; /* Position the element at 50% from the left */
+            transform: translate(-50%, -50%); /* Center the element precisely */
+          }
+          .btn:hover {
+            background-color: #45a049;
+          }
+          .btn:active {
+            background-color: #3e8e41;
+          }
+
+          input {
+            padding: 15px;
+             margin: 10px;
+             border: 5px solid #acffaf;
+             background-color: white;
+             border-radius: 30px;
+             font-size: 18px;
+             width: 300px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             outline: none;
+            text-align: center;
+          }
+          
+          button {
+            padding: 15px 30px;
+             margin: 10px;
+             border: none;
+             border-radius: 30px;
+             font-size: 18px;
+              background-color: #66de92;
+             color: rgb(255, 255, 255);
+             cursor: pointer;
+             transition: background-color 0.3s ease;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+
+          
+        </style>
+        </head>
+    
+    
+        <! -- Вид Кнопки - Get a Career Guidence -->
+    <body>
+        <a href="https://www.tanu.ai/" class="button">Tanu.AI</a>   
+    </body>
+            
+
+      <body>
+        <button onclick="window.location.href='https://edunavigator.kz/en/'" class="btn">Edunavigator</button>
+      </body>
+  </div>
+
+<div>
+    <body>
+
+        <input type="text" id="userPrompt" placeholder="Напиши Свою Професию">
+        <button id="generateButton">Узнать</button>
+        <div id="output"  style="color: rgb(255, 255, 255); font-size: 18px; font-family: 'Gill Sans'; width: 100%; height: 1000px; border: 1px solid #ccc; padding: 10px; overflow: auto;"></div>
+        
+    
+        <script type="importmap">
+          {
+            "imports": {
+              "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+          }
+        </script>
+        <script type="module">
+          import { GoogleGenerativeAI } from "@google/generative-ai";
+    
+          const API_KEY = "AIzaSyDkUzmsONpqln8mjs_xXqUCof1qh83NlhQ";
+    
+          const genAI = new GoogleGenerativeAI(API_KEY);
+    
+          async function run() {
+            const userInput = `
+            Профессия введена, вам необходимо выбрать 10 лучших вузов мира и 5 лучших вузов Казахстана по данной профессии, а также написать средние требования для поступления в эти вузы (Включая все виды эссе, точные баллы по IELTS, SAT, ACT для мировых и точные баллы по ЕНТ для казахстанских вузов)
+
+Answer Format:
+Топ 10 Университетов по миру:
+
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
+
+Топ 5 Университетов по Казахстану:
+
+University Name - Admission Requirements: (Essays, UNT score)
+University Name - Admission Requirements: (Essays, UNT score)
+University Name - Admission Requirements: (Essays, UNT score)
+University Name - Admission Requirements: (Essays, UNT score)
+University Name - Admission Requirements: (Essays, UNT score)
+
+Не изменяй ничего, до того как не измениться input профессия
+            =${userPrompt}`; 
+            const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+            
+            try {
+              const result = await model.generateContent(userInput); 
+              const response = await result.response;
+              const text = await response.text();
+              document.getElementById('output').innerText = text; 
+            } catch (error) {
+              console.error('Failed to generate content:', error);
+              document.getElementById('output').innerText = "Error: " + error.message; 
+            }
+          }
+    
+          document.getElementById('generateButton').addEventListener('click', run);
+        </script>
+      </body>
+</div>
+
+</html>
