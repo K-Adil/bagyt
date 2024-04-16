@@ -10,24 +10,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Fancy Button</title>
         <style>
-            .button {
-                display: inline-block;
-                padding: 15px 30px;
-                font-size: 16px;
-                margin: 4px 2px;
-                text-decoration: none;
-                color: #ffffff;
-                background-color: #66de92;
-                border-radius: 8px;
-                border: none;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                position: absolute;
-                top: 10%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-
 
 
 
@@ -93,13 +75,11 @@
     
     
         <! -- Вид Кнопки - Get a Career Guidence -->
-    <body>
-        <a href="https://www.tanu.ai/" class="button">Tanu.AI</a>   
-    </body>
+
             
 
       <body>
-        <button onclick="window.location.href='https://edunavigator.kz/en/'" class="btn">Edunavigator</button>
+        <button onclick="window.location.href='https://edunavigator.kz/en/'" class="btn">Пройти Профориентацию</button>
       </body>
   </div>
 
@@ -127,35 +107,7 @@
     
           async function run() {
             const userInput = `
-            Профессия введена, вам необходимо выбрать 10 лучших вузов мира и 5 лучших вузов Казахстана по данной профессии, а также написать средние требования для поступления в эти вузы (Включая все виды эссе, точные баллы по IELTS, SAT, ACT для мировых и точные баллы по ЕНТ для казахстанских вузов)
-
-Answer Format:
-Топ 10 Университетов по миру:
-
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-University Name - (Country) - Admission Requirements: (Essays, IELTS, SAT, ACT)
-
-Топ 5 Университетов по Казахстану:
-
-University Name - Admission Requirements: (Essays, UNT score)
-University Name - Admission Requirements: (Essays, UNT score)
-University Name - Admission Requirements: (Essays, UNT score)
-University Name - Admission Requirements: (Essays, UNT score)
-University Name - Admission Requirements: (Essays, UNT score)
-
-Не изменяй ничего, до того как не измениться input профессия
-
-И как улучшить свои результаты и ссылки на сайты для улучшения своих результатов
-
-            =${userPrompt}`; 
+            Профессия введена, вам необходимо выбрать 10 лучших вузов мира и 5 лучших вузов Казахстана по данной профессии, а также написать средние требования для поступления в эти вузы (Включая все виды эссе, точные баллы по IELTS, SAT, ACT для мировых и точные баллы по ЕНТ для казахстанских вузов)=${userPrompt}`; 
             const model = genAI.getGenerativeModel({ model: "gemini-pro"});
             
             try {
